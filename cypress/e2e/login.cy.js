@@ -1,10 +1,12 @@
  /// <reference types = "cypress" />
 
 describe ('Login', () =>{
+  beforeEach (() => {
+    cy.visit ('/login#!')
+  })
     
   it('Login com sucesso', () =>{
-    cy.visit ('/login#!')
-
+   
     cy.get('#user')
       .type('joaoqa@gmail.com')
     
@@ -20,8 +22,7 @@ describe ('Login', () =>{
   })
 
   it ('Login com senha inválida', () => {
-    cy.visit ('/login#!')
-
+    
     cy.get('#user')
       .type('joaoqa@gmail.com')
      
@@ -37,8 +38,7 @@ describe ('Login', () =>{
   })
 
   it('Login com e-mail inválido', () =>{
-    cy.visit ('/login#!')
-
+    
     cy.get('#user')
       .type('@joao123')
 
@@ -54,8 +54,7 @@ describe ('Login', () =>{
   })
 
   it('Login com credenciais vazias', () => {
-    cy.visit ('/login#!')
-     
+    
     cy.get ('#user')
       
     cy.get('#password')
