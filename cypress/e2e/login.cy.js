@@ -1,7 +1,7 @@
  /// <reference types = "cypress" />
 
 describe ('Login', () =>{
-  
+    
   it ('Login com sucesso', () =>{
     cy.visit ('https://automationpratice.com.br/login#!')
 
@@ -57,10 +57,8 @@ describe ('Login', () =>{
     cy.visit ('https://automationpratice.com.br/login#!')
      
     cy.get ('#user')
-      .type(' ')
       
     cy.get('#password')
-      .type(' ')
     
     cy.get('#btnLogin')
       .click()
@@ -69,6 +67,5 @@ describe ('Login', () =>{
       .should ('contain','E-mail inválido.')
       .should ('be.visible') 
   })  
-
 
 })
