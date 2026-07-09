@@ -21,11 +21,18 @@ Automatizar cenários de autenticação aplicando boas práticas de testes autom
 - Login com e-mail inválido
 - Login com credenciais vazias
 
+## Melhorias implementadas
+
+- Configuração da `baseUrl` no Cypress para centralizar a URL da aplicação.
+- Utilização do `beforeEach()` para reduzir repetição de código nos testes.
+- Correção do cenário de login com credenciais vazias, eliminando comandos desnecessários.
+
 ## Próximas implementações
 
-- Refatoração com `beforeEach()`
-- Fixtures
+- Automação do fluxo de cadastro
+- Utilização do FakerJS
+- Refatoração utilizando Page Object Model (POM)
 - Custom Commands
-- Page Object Model
+- Fixtures
 - Relatórios de execução
 - Evidências dos testes
