@@ -1,5 +1,13 @@
+import { faker } from '@faker-js/faker'
+
 describe ('Cadastro',() =>{
+  let name, email, password
+
   beforeEach(() => {
+    name = faker.person.fullName()
+    email = faker.internet.email({provider: 'gmail.com'})
+    password = faker.internet.password({length: 8})
+
     cy.visit ('/register')
 
   })
@@ -7,13 +15,13 @@ describe ('Cadastro',() =>{
     it('Cadastro realizado com sucesso', () => {
 
         cy.get('#user')
-          .type('Marcos Antônio')
+          .type(name)
 
         cy.get('#email')
-          .type('marcos12@gmail.com')
+          .type(email)
 
         cy.get('#password')
-          .type('1234567')
+          .type(password)
 
         cy.get('#btnRegister')
           .click ()
@@ -26,13 +34,13 @@ describe ('Cadastro',() =>{
     it('Cadastro com e-mail inválido', () => {
 
         cy.get('#user')
-          .type('Marcos Antônio')
+          .type(name)
 
         cy.get('#email')
-          .type('marcos1gmail,com')
+          .type('teste@,com')
 
         cy.get('#password')
-          .type('1234567')
+          .type(password)
 
         cy.get('#btnRegister')
           .click ()
@@ -45,10 +53,10 @@ describe ('Cadastro',() =>{
     it('Cadastro com senha inválida', () => {
 
         cy.get('#user')
-          .type('Marcos Antônio')
+          .type(name)
 
         cy.get('#email')
-          .type('marcos12@gmail.com')
+          .type(email)
 
         cy.get('#password')
           .type('123')
@@ -63,10 +71,10 @@ describe ('Cadastro',() =>{
      it('Cadastro com nome vazio', () => {
 
         cy.get('#email')
-          .type('marcos12@gmail.com')
+          .type(email)
 
         cy.get('#password')
-          .type('1234567')
+          .type(password)
 
         cy.get('#btnRegister')
           .click ()
@@ -79,10 +87,10 @@ describe ('Cadastro',() =>{
     it('Cadastro com e-mail vazio', () => {
 
         cy.get('#user')
-          .type('Marcos Antônio')
+          .type(name)
 
         cy.get('#password')
-          .type('1234567')
+          .type(password)
 
         cy.get('#btnRegister')
           .click ()
@@ -95,10 +103,10 @@ describe ('Cadastro',() =>{
     it('Cadastro com senha vazia', () => {
 
         cy.get('#user')
-          .type('Marcos Antônio')
+          .type(name)
 
         cy.get('#email')
-          .type('marcos12@gmail.com')
+          .type(email)
 
         cy.get('#btnRegister')
           .click ()
