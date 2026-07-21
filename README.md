@@ -12,12 +12,21 @@ Automatizar os principais cenários de login e cadastro de usuários, evoluindo 
 - Cypress
 - Node.js
 - FakerJS
+- Page Object Model (POM)
 
 ## Ferramentas
 
 - Git
 - GitHub
 - Visual Studio Code
+
+## Boas práticas aplicadas
+
+- Organização dos testes por funcionalidade.
+- Utilização do `beforeEach()` para reduzir repetição de código.
+- Configuração da `baseUrl` para centralizar a URL da aplicação.
+- Geração de dados dinâmicos com **FakerJS** nos cenários de cadastro.
+- Aplicação do padrão **Page Object Model (POM)** para separar as ações das páginas da lógica dos testes, tornando o código mais organizado, reutilizável e de fácil manutenção.
 
 ## Funcionalidades implementadas
 
@@ -26,7 +35,8 @@ Automatizar os principais cenários de login e cadastro de usuários, evoluindo 
 - ✅ Login realizado com sucesso.
 - ✅ Login com senha inválida.
 - ✅ Login com e-mail inválido.
-- ✅ Login com credenciais vazias.
+- ✅ Login com e-mail vazio.
+- ✅ Login com senha vazia.
 
 ### Cadastro
 
@@ -39,19 +49,28 @@ Automatizar os principais cenários de login e cadastro de usuários, evoluindo 
 
 ## Melhorias implementadas
 
-- Configuração da `baseUrl` para centralizar a URL da aplicação.
-- Utilização do `beforeEach()` para reduzir repetição de código.
-- Geração dinâmica de dados utilizando **FakerJS**.
-- Organização dos testes em arquivos separados por funcionalidade (`login.cy.js` e `cadastro.cy.js`).
-- Correção do cenário de login com credenciais vazias.
+- ✅ Configuração da `baseUrl` para centralizar a URL da aplicação.
+- ✅ Utilização do `beforeEach()` para reduzir repetição de código.
+- ✅ Geração dinâmica de dados utilizando **FakerJS**.
+- ✅ Aplicação do padrão **Page Object Model (POM)**.
+- ✅ Organização dos testes utilizando a pasta `pages`.
+- ✅ Separação das ações das páginas da lógica dos testes.
+- ✅ Organização dos testes em arquivos separados por funcionalidade (`login.cy.js` e `cadastro.cy.js`).
 
 ## Estrutura do projeto
 
 ```text
-cypress
-└── e2e
-    ├── login.cy.js
-    └── cadastro.cy.js
+cypress/
+├── e2e/
+│   ├── login.cy.js
+│   └── cadastro.cy.js
+│
+├── support/
+│   ├── pages/
+│   │   ├── login-page.js
+│   │   └── cadastro-page.js
+│   ├── commands.js
+│   └── e2e.js
 ```
 
 ## Como executar o projeto
@@ -68,13 +87,13 @@ git clone <URL_DO_REPOSITORIO>
 npm install
 ```
 
-3. Execute o Cypress.
+3. Execute o Cypress em modo interativo.
 
 ```bash
 npx cypress open
 ```
 
-ou
+Ou execute todos os testes em modo headless.
 
 ```bash
 npx cypress run
@@ -82,7 +101,7 @@ npx cypress run
 
 ## Próximas implementações
 
-- Implementação de **Page Object Model (POM)**.
+- Implementação do fluxo de **Checkout**.
 - Utilização de **Custom Commands**.
 - Utilização de **Fixtures**.
 - Geração de relatórios de execução.
